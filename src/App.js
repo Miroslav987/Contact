@@ -6,7 +6,8 @@ import Modal from "./Components/Modal/Modal";
 
 const App = () => {
   const [taskArr, setTaskArr] = useState([]);
-  const [editAll, seteditAll] = useState({});
+  const [show, setShow] = useState(false);
+  const [oneEditTask, setoneEditTask] = useState({});
   console.log(taskArr);
   function handleInp(objTask) {
     let newTodo = [...taskArr];
@@ -50,12 +51,20 @@ const App = () => {
     <>
       <InpAll handleInp={handleInp} />
       <br />
-      <Info taskArr={taskArr} BtnDelete={BtnDelete} handleShow={handleShow} />
-      <Modal
-        saveEditedINp={saveEditedINp}
-        show={show}
-        handleClose={handleClose}
+      <Info
+        taskArr={taskArr}
+        BtnDelete={BtnDelete}
+        handleShow={handleShow}
+        setoneEditTask={setoneEditTask}
       />
+      {show ? (
+        <Modal
+          saveEditedINp={saveEditedINp}
+          show={show}
+          handleClose={handleClose}
+          oneEditTask={oneEditTask}
+        />
+      ) : null}
     </>
   );
 };

@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 import "./Info.css";
-const Info = ({ taskArr, BtnDelete }) => {
+const Info = ({ taskArr, BtnDelete, handleShow, setoneEditTask }) => {
   function handleEdit(objTask) {
     handleShow();
     setoneEditTask(objTask);
@@ -15,7 +15,7 @@ const Info = ({ taskArr, BtnDelete }) => {
             <p>{item.price} Сом</p>
           </div>
           <div className="allBtn">
-            <button onClick={handleEdit}>Edit</button>
+            <button onClick={() => handleEdit(item)}>Edit</button>
             <button onClick={() => BtnDelete(item.id)}>Delete</button>
           </div>
         </div>

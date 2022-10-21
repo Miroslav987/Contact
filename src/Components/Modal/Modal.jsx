@@ -3,10 +3,11 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./Modal.css";
 
-const Modal = ({ show, handleClose, saveEditedINp }) => {
-  const [editinpName, seteditInpName] = useState("");
-  const [editinpPrice, seteditInpPrice] = useState("");
-  const [editinpUrl, seteditInpUrl] = useState("");
+const Modal = ({ show, handleClose, saveEditedINp, oneEditTask }) => {
+  console.log(oneEditTask);
+  const [editinpName, seteditInpName] = useState(oneEditTask.name);
+  const [editinpPrice, seteditInpPrice] = useState(oneEditTask.price);
+  const [editinpUrl, seteditInpUrl] = useState(oneEditTask.img);
   function handleSave() {
     if (!editinpName.trim() || !editinpPrice.trim() || !editinpUrl.trim()) {
       toast.error(" Заполните поле", {
@@ -25,8 +26,9 @@ const Modal = ({ show, handleClose, saveEditedINp }) => {
       name: editinpName,
       price: editinpPrice,
       img: editinpUrl,
-      id: Date.now(),
+      id: oneEditTask.id,
     };
+    handleClose();
     saveEditedINp(editObj);
   }
   return (
@@ -57,7 +59,7 @@ const Modal = ({ show, handleClose, saveEditedINp }) => {
           }}
         />
         <div id="modal-btn">
-          <button>Close</button>
+          <button onClick={handleClose}>Close</button>
           <button onClick={handleSave}>Save</button>
         </div>
       </div>
