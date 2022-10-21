@@ -1,0 +1,22 @@
+#block_inp {
+  display: flex;
+  flex-direction: column;
+  width: 500px;
+  margin: 10px auto;
+}
+input {
+  margin-top: 5px;
+  height: 30px;
+  font-size: 17px;
+  text-align: center;
+}
+#save {
+  margin: 0 auto;
+  width: 100px;
+  height: 40px;
+  border: none;
+  background: black;
+  color: white;
+  font-size: 15px;
+  border-radius: 2px;
+}
